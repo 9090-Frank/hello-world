@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Contact us</title>
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+            
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+            }
+            
+            section {
+                height: 100%;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-direction: column;
+            }
+            
+            .container {
+                width: 90%;
+                max-width: 500px;
+                margin: 0 auto;
+                padding: 20px;
+                box-shadow: 0px 0px 20px #00000010;
+                background: white;
+                border-radius: 8px;
+                margin-bottom: 20px;
+                opacity: .8;
+            }
+            
+            .form-group {
+                width: 100%;
+                margin-top: 20px;
+                font-size: 20px;
+            }
+            
+            .form-group input,
+            .form-group textarea {
+                width: 100%;
+                padding: 5px;
+                font-size: 18px;
+                border: 1px solid rgba(128, 128, 128, 0, 199);
+                margin-top: 5px;
+            }
+            
+            .textarea {
+                resize: vertical;
+            }
+            
+            button[type="submit"] {
+                width: 100%;
+                border: none;
+                outline: none;
+                padding: 20px;
+                font-size: 24px;
+                border-radius: 8px;
+                font-family: Arial, Helvetica, sans-serif;
+                color: rgb(27, 166, 247);
+                text-align: center;
+                cursor: pointer;
+                margin-top: 10px;
+                transition: .3s ease background-color;
+            }
+            
+            button[type="submit"]:hover {
+                background-color: rgb(214, 226, 216);
+            }
+            
+            #status {
+                width: 90%;
+                max-width: 500px;
+                text-align: center;
+                padding: 10px;
+                margin: 0 auto;
+                border-radius: 8px;
+            }
+            
+            #status.success {
+                background-color: white;
+                animation: status 4s ease forwords;
+            }
+            
+            #status.error {
+                background-color: red;
+                color: white;
+                animation: status 4s ease forwords;
+            }
+            
+            @keyframes status {
+                0% {
+                    opacity: 1;
+                    pointer-events: all;
+                }
+                90% {
+                    opacity: 1;
+                    pointer-events: all;
+                }
+                100% {
+                    opacity: 0;
+                    pointer-events: none;
+                }
+            }
+            
+            body {
+                background-image: url("Salix.06.jpg");
+                background-size: cover;
+            }
+            
+            ul {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                height: 36px;
+                line-height: 36px;
+                background-color: black;
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 15px;
+            }
+            
+            li {
+                float: left;
+                border-right: 1px solid white;
+                text-align: center;
+            }
+            
+            a {
+                display: block;
+                padding: 0 28px;
+                color: white;
+                text-decoration: none;
+            }
+            
+            a:hover {
+                background-color: green;
+            }
+        </style>
+    </head>
+</body>
+
+<body>
+    <h1 style="color: black;background-color: white;font-style:new-roman;border: solid 10px black">
+        <center><b>Contact us</b></center>
+    </h1>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="mty.html">About us</a></li>
+        <li><a href="trail.html">Masthead</a></li>
+        <li><a href="utg.html">Submissions</a></li>
+        <li><a href="hgt.html">Issues</a></li>
+        <li><a href="fgh.html">Donate</a></li>
+        <li><a href="dfg.html">Contact us</a></li>
+    </ul>
+    <section>
+        <div class="container">
+            <form action="https://formspree.io/f/mdoplvyk" method="POST" id="my-form">
+                <div class="form-group">
+                    <label for="fastName">First Name</label>
+                    <input type="text" id="firstName" name="firstName">
+                </div>
+
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" id="lastName" name="lastName">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email">
+                </div>
+
+                <div class="form-group">
+                    <label for="country">country</label>
+                    <input type="text" id="country" name="country">
+                </div>
+
+                <div class="form-group">
+                    <label for="massage">Message</label>
+                    <textarea type="message" name="massage" id="massage" cols="30" rows="10"></textarea>
+                </div>
+                <button type="submit">Submit</button>
+                </from>
+        </div>
+        <div id="status" class="error" style="background-color:white;font-size:100%;font-style:new-roman;">Thank you for your interest</div>
+    </section>
+    <script>
+        window.addEventListener("DOMContentLoaded", function() {
+
+            // get the form elements defined in your form HTML above
+
+            var form = document.getElementById("my-form");
+            var button = document.getElementById("my-form-button");
+            var status = document.getElementById("my-form-status");
+
+            // Success and Error functions for after the form is submitted
+
+            function success() {
+                form.reset();
+                button.style = "display: none ";
+                status.classList.add('success')
+                status.innerHTML = "Thank!";
+            }
+
+            function error() {
+                status.classList.add('error')
+                status.innerHTML = "Oops! There was a problem.";
+            }
+
+            // handle the form submission event
+
+            form.addEventListener("submit", function(ev) {
+                ev.preventDefault();
+                var data = new FormData(form);
+                ajax(form.method, form.action, data, success, error);
+            });
+        });
+
+        // helper function for sending an AJAX request
+
+        function ajax(method, url, data, success, error) {
+            var xhr = new XMLHttpRequest();
+            xhr.open(method, url);
+            xhr.setRequestHeader("Accept", "application/json");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState !== XMLHttpRequest.DONE) return;
+                if (xhr.status === 200) {
+                    success(xhr.response, xhr.responseType);
+                } else {
+                    error(xhr.status, xhr.response, xhr.responseType);
+                }
+            };
+            xhr.send(data);
+        }
+    </script>
+</body>
+
+</html>
